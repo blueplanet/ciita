@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
 
-gem 'sqlite3'
-
 gem 'puma'
 
 gem 'bootstrap-sass'
@@ -29,7 +27,12 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'sqlite3'
+  gem 'web-console', '~> 2.0'
 end
 
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+end
