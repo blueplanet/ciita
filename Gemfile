@@ -31,6 +31,7 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'rspec-rails'
   gem 'spring'
   gem 'sqlite3'
   gem 'web-console', '~> 2.0'
