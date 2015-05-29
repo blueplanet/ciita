@@ -4,6 +4,8 @@ ruby '2.2.2'
 
 gem 'rails', '4.2.1'
 
+gem 'devise'
+
 gem 'puma'
 
 gem 'bootstrap-sass'
