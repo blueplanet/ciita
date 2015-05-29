@@ -4,6 +4,8 @@ ruby '2.2.2'
 
 gem 'rails', '4.2.1'
 
+gem 'devise'
+
 gem 'puma'
 
 gem 'bootstrap-sass'
@@ -29,6 +31,7 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'rspec-rails'
   gem 'spring'
   gem 'sqlite3'
   gem 'web-console', '~> 2.0'
