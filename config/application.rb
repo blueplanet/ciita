@@ -20,5 +20,13 @@ module Ciita
     config.time_zone = 'Asia/Tokyo'
     config.i18n.default_locale = :ja
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.generators do |g|
+      g.view_specs false
+      g.helper_specs false
+      g.helper false
+      g.javascripts false
+      g.stylesheets false
+    end
   end
 end
