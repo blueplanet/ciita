@@ -18,6 +18,7 @@ Bundler.require(*Rails.groups)
 module Ciita
   class Application < Rails::Application
     config.time_zone = 'Asia/Tokyo'
+    I18n.available_locales = [:en, :ja]
     config.i18n.default_locale = :ja
     config.active_record.raise_in_transactional_callbacks = true
 
