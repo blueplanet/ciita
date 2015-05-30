@@ -1,0 +1,12 @@
+nav.navbar.navbar-default
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed type='button' data-toggle='collapsed' data-target='#navbar-collapse'
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href='/' Ciita
+
+    = render 'user_navbar' if user_signed_in?
+
