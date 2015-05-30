@@ -1,17 +1,17 @@
-.jumbotron
-  .container
-    .row
-      .col-md-8
+.row
+  .col-md-8
+    .jumbotron
+      .container
         h2
           |Ciitaは、プログラマのための
           br
           |技術情報共有サービスです。
         p
           = link_to 'ユーザを新規登録する', new_user_registration_path, class: 'btn btn-primary btn-lg'
-      .col-md-4
-        = form_tag session_path(:user) do
-          .form-group
-            = text_field_tag :email, '', class: 'form-control', placeholder: 'メールアドレス'
-          .form-group
-            = text_field_tag :password, '', class: 'form-control', placeholder: 'パスワード'
-          button.btn.btn-success type='submit' ログイン
+  .col-md-4
+    = form_tag session_path(:user) do
+      .form-group
+        = text_field_tag :email, '', class: 'form-control', placeholder: 'メールアドレス'
+      .form-group
+        = text_field_tag :password, '', class: 'form-control', placeholder: 'パスワード'
+      button.btn.btn-success type='submit' ログイン

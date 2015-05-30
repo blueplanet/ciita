@@ -1,16 +1,13 @@
 #navbar-collapse.collapse.navbar-collapse
   ul.nav.navbar-nav.navbar-right
-    li
-      a href='#' Link
     li.dropdown
       a.dropdown-toggle href='#' data-toggle='dropdown' role='button' aria-expanded='false'
-        |Dropdown
+        i.fa.fa-user.fa-lg
+        =< current_user.email
         span.caret
       ul.dropdown-menu role='menu'
         li
-          a href='#' Action
-        li
-          a href='#' Another action
+          = link_to 'ログイン情報管理', edit_user_registration_path
         li.divider
         li
-          a href='#' Separated link
+          = link_to 'ログアウト', destroy_user_session_path, method: :delete
