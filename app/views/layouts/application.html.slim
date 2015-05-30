@@ -9,11 +9,10 @@ html
     = csrf_meta_tags
 
   body
+    = render 'navbar'
+
     .container
-      .row
-        .col-md-12
-          = render 'alert', message: notice, alert_type: 'info' if notice
-          = render 'alert', message: alert, alert_type: 'warning' if alert
+      = render 'alerts'
 
       = yield
 
