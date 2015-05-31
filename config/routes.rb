@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'tops/show'
 
   resources :items, only: %i(index)
+  resources :tags, only: %i(show)
 
   devise_for :users
 
