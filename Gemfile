@@ -12,6 +12,7 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'slim-rails'
 gem 'devise-bootstrap-views'
+gem 'kaminari'
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -32,10 +33,16 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'spring'
   gem 'sqlite3'
   gem 'web-console', '~> 2.0'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'shoulda-matchers'
 end
 
 group :production do
