@@ -32,10 +32,16 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'spring'
   gem 'sqlite3'
   gem 'web-console', '~> 2.0'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'shoulda-matchers'
 end
 
 group :production do
