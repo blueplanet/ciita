@@ -1,5 +1,5 @@
 .page-header すべての投稿
 
-= render @items
+= render partial: 'item', collection: @items
 
 .text-center = paginate @items
