@@ -4,6 +4,7 @@
       .container
         h2 = @item.title
         .tags = render partial: 'tags/tag_with_count', collection: @item.tags, as: :tag
-        = "#{@item.user.email} が#{l @item.created_at.to_date}に投稿"
+        = link_to '投稿を編集する', [:edit, @item], class: 'btn btn-default', 'data-no-turbolink': '1' if @item.user == current_user
+        =< "#{@item.user.email} が#{l @item.created_at.to_date}に投稿"
 
 .item-body = simple_format @item.body

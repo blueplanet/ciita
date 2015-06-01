@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_item, only: %i(edit update)
 
   def index
     @items = Item.order(created_at: :desc).page(params[:page])
@@ -23,9 +24,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  def update
+    if @item.update item_params
+      redirect_to @item, notice: t('.updated')
+    else
+      render :edit
+    end
+  end
+
   private
 
     def item_params
       params.require(:item).permit(:title, :body, :tag_list)
+    end
+
+    def set_item
+      @item = current_user.items.find params[:id]
     end
 end

@@ -1,0 +1,19 @@
+= form_for @item do |f|
+  - if @item.errors.any?
+    .alert.alert-danger
+      |下記のエラーを確認してください。
+      ul
+        - @item.errors.full_messages.each do |message|
+          li = message
+
+  .form-group
+    = f.text_field :title, class: 'form-control input-lg', placeholder: 'タイトル', autofocus: true
+  .form-group
+    = f.text_field :tag_list, value: @item.tag_list.join(','), class: 'form-control', 'data-role' => 'tagsinput', placeholder: 'タグ'
+  .form-group
+    = f.text_area :body, class: 'form-control', rows: 40
+  .text-right
+    = f.button class: 'btn btn-success btn-lg' do
+      i.fa.fa-upload
+      '
+      = @item.new_record? ? 'Ciita に投稿' : '更新'
