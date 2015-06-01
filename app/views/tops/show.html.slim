@@ -9,9 +9,9 @@
         p
           = link_to 'ユーザを新規登録する', new_user_registration_path, class: 'btn btn-primary btn-lg'
   .col-md-4
-    = form_tag session_path(:user) do
+    = form_for(:user, url: session_path(:user), html: { role: "form" }) do |f|
       .form-group
-        = text_field_tag :email, '', class: 'form-control', placeholder: 'メールアドレス'
+        = f.text_field :email, class: 'form-control', placeholder: 'メールアドレス'
       .form-group
-        = password_field_tag :password, '', class: 'form-control', placeholder: 'パスワード'
-      button.btn.btn-success type='submit' ログイン
+        = f.password_field :password, class: 'form-control', placeholder: 'パスワード'
+      = f.submit 'ログイン', class: 'btn btn-success'
