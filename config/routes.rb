@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :items, only: %i(new create index show)
   resources :tags, only: %i(show)
+  resources :users, only: %i(show)
 
   devise_for :users
 
