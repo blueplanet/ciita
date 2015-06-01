@@ -2,3 +2,5 @@ ja:
   items:
     create:
       created: 投稿しました。
+    update:
+      updated: 投稿を更新しました。
