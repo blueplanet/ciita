@@ -1,0 +1,12 @@
+.page-header
+  h2 = @user.email
+
+ul.nav.nav-tabs
+  li.active role='presentation'
+    a href='#last_items' 最近の投稿
+
+.tab-content
+  #user-last-items.tab-pane.fade.in.active
+    = render partial: 'item', collection: @last_items
+
+    .text-center = paginate @last_items
