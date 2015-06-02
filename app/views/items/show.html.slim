@@ -8,3 +8,15 @@
         =< "#{@item.user.email} が#{l @item.created_at.to_date}に投稿"
 
 .item-body = simple_format @item.body
+
+.comments
+  hr
+
+  = render @item.comments.order(:created_at)
+
+  .row
+    .col-md-12
+      = form_for [@item, Comment.new] do |f|
+        .form-group
+          = f.text_area :body, rows: 3, placeholder: 'コメントを入力してください。', class: 'form-control'
+        .text-right = f.submit '投稿する', class: 'btn btn-success'

@@ -1,0 +1,5 @@
+ja:
+  comments:
+    create:
+      created: コメントを投稿しました。
+      no_created: コメントを投稿できませんでした。再度お試しください。
