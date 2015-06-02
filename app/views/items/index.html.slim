@@ -4,6 +4,6 @@
 
 |すべての投稿
 
-= render partial: 'item', collection: @items
+= render partial: 'item', collection: @items, locals: { tags_in_new_line: false }
 
 .text-center = paginate @items

@@ -4,4 +4,5 @@
       = item.user.email
       small =< "が#{time_ago_in_words(item.created_at)}前に投稿しました"
     = link_to item.title, item
+    = tag :br if tags_in_new_line
     = render partial: 'tag', collection: item.tags

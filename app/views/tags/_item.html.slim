@@ -1,7 +1,0 @@
-.media
-  .media-body
-    .media-heading
-      = "#{item.user.email} が#{time_ago_in_words(item.created_at)}前に投稿しました"
-    = link_to item.title, item
-    br
-    = render partial: 'tag', collection: item.tags
