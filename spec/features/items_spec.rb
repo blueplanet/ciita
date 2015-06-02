@@ -19,6 +19,12 @@ feature 'ユーザは、投稿を管理したい' do
       visit item_path(items.last)
 
       within '#new_comment' do
+        click_on '投稿する'
+      end
+
+      expect(page).to have_content 'コメントを投稿できませんでした。再度お試しください。'
+
+      within '#new_comment' do
         fill_in 'comment_body', with: '新しいコメント内容'
 
         click_on '投稿する'
@@ -39,6 +45,9 @@ feature 'ユーザは、投稿を管理したい' do
 
     visit items_path
     click_on 'ノウハウ・Tipsを投稿する'
+
+    click_on 'Ciita に投稿'
+    expect(page).to have_content 'タイトルを入力してください。'
 
     fill_in 'item_title', with: new_item.title
     fill_in 'item_tag_list', with: new_item.tag_list.join(',')
@@ -64,6 +73,11 @@ feature 'ユーザは、投稿を管理したい' do
 
     visit item_path(item)
     click_on '投稿を編集する'
+
+    fill_in 'item_title', with: ''
+    click_on '更新'
+
+    expect(page).to have_content 'タイトルを入力してください。'
 
     fill_in 'item_title', with: update_item.title
     fill_in 'item_tag_list', with: update_item.tag_list.join(',')
