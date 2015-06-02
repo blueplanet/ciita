@@ -45,6 +45,7 @@ end
 group :test do
   gem 'capybara'
   gem 'shoulda-matchers'
+  gem 'coveralls', require: false
 end
 
 group :production do
