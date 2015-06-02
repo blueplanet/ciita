@@ -15,6 +15,12 @@ feature 'ゲストは、ユーザを登録できる' do
     expect(current_path).to eq items_path
     expect(page).to have_content 'アカウント登録が完了しました。'
   end
+
+  scenario '投稿一覧にアクセスすると、サインイン画面にリダイレクトされる' do
+    visit items_path
+
+    expect(current_path).to eq new_user_session_path
+  end
 end
 
 feature 'ユーザは、自分の情報を管理できる' do
