@@ -12,7 +12,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find params[:id]
-    @comment = @item.comments.build
   end
 
   def create
