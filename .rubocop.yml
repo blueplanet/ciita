@@ -1,0 +1,4 @@
+AllCops:
+  RunRailsCops: true
+StringLiterals:
+  EnforcedStyle: single_quotes
