@@ -32,6 +32,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def preview
+    render text: markdown(params[:md_body])
+  end
+
   private
 
     def item_params

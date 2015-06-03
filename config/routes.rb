@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :items, only: %i(new create edit update index show) do
     resources :comments, only: %i(create)
+    post :preview, on: :collection
   end
 
   resources :tags, only: %i(show)

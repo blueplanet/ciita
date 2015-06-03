@@ -1,4 +1,4 @@
-= form_for @item do |f|
+= form_for @item, html: { class: 'item-form' } do |f|
   - if @item.errors.any?
     .alert.alert-danger
       |下記のエラーを確認してください。
@@ -11,7 +11,15 @@
   .form-group
     = f.text_field :tag_list, value: @item.tag_list.join(','), class: 'form-control', 'data-role' => 'tagsinput', placeholder: 'タグ'
   .form-group
-    = f.text_area :body, class: 'form-control', rows: 40
+    .row
+      .col-md-6
+        = f.text_area :body, class: 'form-control', rows: 40
+      .col-md-6
+        .preview.panel.panel-default
+          .panel-heading
+            h4 プレビュー
+          .panel-body
+            == markdown(@item.body || '')
   .text-right
     = f.button class: 'btn btn-success btn-lg' do
       i.fa.fa-upload
