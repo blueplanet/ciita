@@ -19,6 +19,7 @@
           .panel-heading
             h4 プレビュー
           .panel-body
+            == markdown @item.body
   .text-right
     = f.button class: 'btn btn-success btn-lg' do
       i.fa.fa-upload
