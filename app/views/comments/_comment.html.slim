@@ -3,4 +3,4 @@
     b
       = comment.user.email
       .pull-right = l comment.created_at
-    = simple_format comment.body
+    == markdown comment.body
