@@ -15,6 +15,7 @@ gem 'devise-bootstrap-views'
 gem 'kaminari'
 
 gem 'acts-as-taggable-on'
+gem 'acts_as_follower'
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
