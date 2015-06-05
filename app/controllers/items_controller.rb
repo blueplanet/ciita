@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_edit_item, only: %i(edit update)
+  before_action :set_edit_item, only: %i(edit update stock unstock)
 
   def index
     @items = Item.order(created_at: :desc).page(params[:page])
@@ -30,6 +30,16 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def stock
+    current_user.follow(@item)
+    redirect_to @item
+  end
+
+  def unstock
+    current_user.stop_following(@item)
+    redirect_to @item
   end
 
   def preview
