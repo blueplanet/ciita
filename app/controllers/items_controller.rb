@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_edit_item, only: %i(edit update stock unstock)
+  before_action :set_edit_item, only: %i(edit update)
+  before_action :set_item, only: %i(stock unstock)
 
   def index
     @items = Item.order(created_at: :desc).page(params[:page])
@@ -54,5 +55,9 @@ class ItemsController < ApplicationController
 
     def set_edit_item
       @item = current_user.items.find params[:id]
+    end
+
+    def set_item
+      @item = Item.find params[:id]
     end
 end
