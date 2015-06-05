@@ -17,7 +17,7 @@
             .row
               .col-md-12
                 - if current_user.following?(@item)
-                  = link_to 'ストック済', [:unstock, @item], class: 'btn btn-primary btn-block', method: :patch
+                  = link_to 'ストック解除', [:unstock, @item], class: 'btn btn-danger btn-block', method: :patch
                 - else
                   = link_to [:stock, @item], class: 'btn btn-default btn-block', method: :patch do
                     i.fa.fa-folder.text-success
