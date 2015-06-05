@@ -92,4 +92,15 @@ feature 'ユーザは、投稿を管理したい' do
     expect(page).to have_content update_item.title
     expect(page).to have_content update_item.body
   end
+
+  scenario '投稿をストックできる' do
+    item = create :item
+
+    visit item_path(item)
+    click_on 'ストック'
+    expect(page).to have_content 'ストック解除'
+
+    click_on 'ストック解除'
+    expect(page).to have_content 'ストック'
+  end
 end

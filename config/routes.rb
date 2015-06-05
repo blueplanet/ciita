@@ -4,8 +4,14 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :items, only: %i(new create edit update index show) do
-    resources :comments, only: %i(create)
+    member do
+      patch :stock
+      patch :unstock
+    end
+
     post :preview, on: :collection
+
+    resources :comments, only: %i(create)
   end
 
   resources :tags, only: %i(show)

@@ -2,10 +2,28 @@
   .item-header
     .jumbotron
       .container
-        h2 = @item.title
-        .tags = render partial: 'tags/tag_with_count', collection: @item.tags, as: :tag
-        = link_to '投稿を編集する', [:edit, @item], class: 'btn btn-default', 'data-no-turbolink': '1' if @item.user == current_user
-        =< "#{@item.user.email} が#{l @item.created_at.to_date}に投稿"
+        .row
+          .col-md-9
+            h2 = @item.title
+            .tags = render partial: 'tags/tag_with_count', collection: @item.tags, as: :tag
+            = link_to '投稿を編集する', [:edit, @item], class: 'btn btn-default', 'data-no-turbolink': '1' if @item.user == current_user
+            =< "#{@item.user.email} が#{l @item.created_at.to_date}に投稿"
+          .col-md-3.text-center
+            .row
+              .col-md-12
+                h2
+                  i.fa.fa-folder.small
+                  =< @item.followers_count
+            .row
+              .col-md-12
+                - if current_user.following?(@item)
+                  = link_to 'ストック解除', [:unstock, @item], class: 'btn btn-danger btn-block', method: :patch
+                - else
+                  = link_to [:stock, @item], class: 'btn btn-default btn-block', method: :patch do
+                    i.fa.fa-folder.text-success
+                    '
+                    |ストック
+
 
 .item-body== markdown @item.body
 
