@@ -26,11 +26,15 @@ end
 feature 'ユーザは、自分の情報を管理できる' do
   given!(:user) { create :user }
   given!(:my_items) { create_list :item, 5, user: user }
-  background { login_with user }
+  background do
+    login_with user
+
+    within '.navbar-nav.navbar-right' do
+      click_on user.email
+    end
+  end
 
   scenario 'マイページにアクセスできる', js: true do
-    find('.navbar-nav.navbar-right a').click
-
     within 'ul.dropdown-menu' do
       click_on 'マイページ'
     end
@@ -43,8 +47,6 @@ feature 'ユーザは、自分の情報を管理できる' do
   end
 
   scenario 'ログイン情報を更新できる', js: true do
-    find('.navbar-nav.navbar-right a').click
-
     within 'ul.dropdown-menu' do
       click_on 'ログイン情報管理'
     end
@@ -63,8 +65,6 @@ feature 'ユーザは、自分の情報を管理できる' do
   end
 
   scenario 'ログアウトできる', js: true do
-    find('.navbar-nav.navbar-right a').click
-
     within 'ul.dropdown-menu' do
       click_on 'ログアウト'
     end
