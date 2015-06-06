@@ -7,6 +7,6 @@ ul.nav.nav-tabs
 
 .tab-content
   #user-last-items.tab-pane.fade.in.active
-    = render partial: 'item', collection: @last_items
+    = render partial: 'item', collection: @last_items, locals: { tags_in_new_line: true }
 
     .text-center = paginate @last_items

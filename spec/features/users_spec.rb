@@ -25,6 +25,7 @@ end
 
 feature 'ユーザは、自分の情報を管理できる' do
   given!(:user) { create :user }
+  given!(:my_items) { create_list :item, 5, user: user }
   background { login_with user }
 
   scenario 'マイページにアクセスできる', js: true do
@@ -35,6 +36,10 @@ feature 'ユーザは、自分の情報を管理できる' do
     end
 
     expect(current_path).to eq user_path(user)
+    expect(page).to have_content '最近の投稿'
+    my_items.each do |item|
+      expect(page).to have_content item.title
+    end
   end
 
   scenario 'ログイン情報を更新できる', js: true do
