@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'stocks/index'
+
   get 'tops/show'
 
   devise_for :users
@@ -15,7 +17,9 @@ Rails.application.routes.draw do
   end
 
   resources :tags, only: %i(show)
-  resources :users, only: %i(show)
+  resources :users, only: %i(show) do
+    resources :stocks, only: %i(index)
+  end
 
   root 'tops#show'
 end

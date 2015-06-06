@@ -1,7 +1,7 @@
 .item-box.media
   .media-body
     .media-heading
-      = item.user.email
+      = link_to item.user.email, item.user
       small =< "が#{time_ago_in_words(item.created_at)}前に投稿しました"
     = link_to item.title, item
     = tag :br if tags_in_new_line
