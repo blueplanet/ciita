@@ -29,19 +29,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
   gem 'better_errors'
+  gem 'byebug'
   gem 'binding_of_caller'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'quiet_assets'
+  gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do
-  gem 'byebug'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'spring'
   gem 'sqlite3'
-  gem 'web-console', '~> 2.0'
 end
 
 group :test do
