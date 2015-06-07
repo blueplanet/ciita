@@ -10,10 +10,11 @@
             => @user.followers_count
             small Contribution
     .col-md-3
-      - if current_user.following?(@user)
-        = link_to 'フォローを解除', unfollow_user_path(@user), class: 'btn btn-danger btn-lg', method: :patch
-      - else
-        = link_to 'フォロー', follow_user_path(@user), class: 'btn btn-success btn-lg', method: :patch
+      - unless current_user == @user
+        - if current_user.following?(@user)
+          = link_to 'フォローを解除', unfollow_user_path(@user), class: 'btn btn-danger btn-lg', method: :patch
+        - else
+          = link_to 'フォロー', follow_user_path(@user), class: 'btn btn-success btn-lg', method: :patch
 
 ul.nav.nav-tabs
   li.active role='presentation'
