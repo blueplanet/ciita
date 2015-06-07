@@ -74,3 +74,42 @@ feature 'ユーザは、自分の情報を管理できる' do
     expect(page).to_not have_content user.email
   end
 end
+
+feature 'ユーザは、気になる情報を管理したい' do
+  given!(:user) { create :user }
+  given!(:other_user) { create :user }
+  given!(:tag) do
+    item = create :item, tag_list: 'tag1'
+    item.tags.first
+  end
+
+  background do
+    login_with user
+  end
+
+  scenario '他のユーザをフォローできる' do
+    visit user_path(other_user)
+    expect(page).to have_content '0 Contribution'
+
+    click_on 'フォローする'
+    expect(page).to have_content 'フォローを解除する'
+    expect(page).to have_content '1 Contribution'
+
+    click_on 'フォローを解除する'
+    expect(page).to have_content 'フォローする'
+    expect(page).to have_content '0 Contribution'
+  end
+
+  scenario 'タグをフォローできる' do
+    visit tag_path(id: tag.name)
+    expect(page).to have_content '0フォロワー'
+
+    click_on 'フォローする'
+    expect(page).to have_content 'フォローを解除する'
+    expect(page).to have_content '1フォロワー'
+
+    click_on 'フォローを解除する'
+    expect(page).to have_content 'フォローする'
+    expect(page).to have_content '0フォロワー'
+  end
+end
