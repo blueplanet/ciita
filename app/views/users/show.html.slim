@@ -1,5 +1,7 @@
 .page-header
-  h2 = @user.email
+  h2
+    = image_tag @user.gravatar_url
+    =< @user.email
 
 ul.nav.nav-tabs
   li.active role='presentation'

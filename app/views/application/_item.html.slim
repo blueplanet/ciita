@@ -1,4 +1,7 @@
 .item-box.media
+  .media-left
+    = link_to item.user do
+      = image_tag item.user.gravatar_url, size: '64x64'
   .media-body
     .media-heading
       = link_to item.user.email, item.user
