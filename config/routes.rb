@@ -16,7 +16,13 @@ Rails.application.routes.draw do
     resources :comments, only: %i(create)
   end
 
-  resources :tags, only: %i(show)
+  resources :tags, only: %i(show) do
+    member do
+      patch :follow
+      patch :unfollow
+    end
+  end
+
   resources :users, only: %i(show) do
     resources :stocks, only: %i(index)
 

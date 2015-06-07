@@ -12,9 +12,9 @@
     .col-md-3
       - unless current_user == @user
         - if current_user.following?(@user)
-          = link_to 'フォローを解除', unfollow_user_path(@user), class: 'btn btn-danger btn-lg', method: :patch
+          = link_to 'フォローを解除する', unfollow_user_path(@user), class: 'btn btn-danger', method: :patch
         - else
-          = link_to 'フォロー', follow_user_path(@user), class: 'btn btn-success btn-lg', method: :patch
+          = link_to 'フォローする', follow_user_path(@user), class: 'btn btn-success', method: :patch
 
 ul.nav.nav-tabs
   li.active role='presentation'
