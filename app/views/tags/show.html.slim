@@ -10,7 +10,20 @@
           = link_to 'フォローする', follow_tag_path(id: @tag.name), class: 'btn btn-success', method: :patch
 
     .well
-      = "#{@tag.name}に関する情報が集まっています。現在#{@tag.taggings_count}件の投稿があります。"
+      .row
+        .col-md-1
+          .count-box.text-center
+            .count = @tag.taggings_count
+            small 投稿
+        .col-md-1
+          .count-box.text-center
+            .count = @tag.followers_count
+            small フォロワー
+        .col-md-10
+          h4
+            = "#{@tag.name}に関する情報が集まっています。現在#{@tag.taggings_count}件の投稿があります。"
+            br
+            = "また#{@tag.followers_count}人のユーザーが#{@tag.name}タグをフォローしています。"
 
   h3 新着投稿
 
