@@ -19,6 +19,11 @@ Rails.application.routes.draw do
   resources :tags, only: %i(show)
   resources :users, only: %i(show) do
     resources :stocks, only: %i(index)
+
+    member do
+      patch :follow
+      patch :unfollow
+    end
   end
 
   root 'tops#show'
