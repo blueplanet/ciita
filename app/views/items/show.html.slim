@@ -33,7 +33,8 @@
 .comments
   hr
 
-  = render @item.comments.order(:created_at)
+  ul.media-list
+    = render @item.comments.order(:created_at)
 
   .row
     .col-md-12

@@ -1,6 +1,10 @@
-.panel.panel-default
-  .panel-body
-    b
+li.media
+  .media-left
+    = link_to comment.user do
+      = image_tag comment.user.gravatar_url, size: '36x36'
+
+  .media-body
+    h4.media-heading
       = comment.user.email
       .pull-right = l comment.created_at
     == markdown comment.body
