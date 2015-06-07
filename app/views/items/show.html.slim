@@ -7,7 +7,10 @@
             h2 = @item.title
             .tags = render partial: 'tags/tag_with_count', collection: @item.tags, as: :tag
             = link_to '投稿を編集する', [:edit, @item], class: 'btn btn-default', 'data-no-turbolink': '1' if @item.user == current_user
-            =< "#{@item.user.email} が#{l @item.created_at.to_date}に投稿"
+            span
+              =< image_tag @item.user.gravatar_url, size: '24x24'
+              =< @item.user.email
+            = " が#{l @item.created_at.to_date}に投稿"
           .col-md-3.text-center
             .row
               .col-md-12
