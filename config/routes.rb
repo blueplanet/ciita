@@ -16,20 +16,17 @@ Rails.application.routes.draw do
     resources :comments, only: %i(create)
   end
 
-  resources :tags, only: %i(show) do
+  concern :followable do
     member do
       patch :follow
       patch :unfollow
     end
   end
 
-  resources :users, only: %i(show) do
-    resources :stocks, only: %i(index)
+  resources :tags, only: %i(show), concerns: :followable
 
-    member do
-      patch :follow
-      patch :unfollow
-    end
+  resources :users, only: %i(show), concerns: :followable do
+    resources :stocks, only: %i(index)
   end
 
   root 'tops#show'
