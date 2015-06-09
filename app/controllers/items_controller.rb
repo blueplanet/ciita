@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @all_items = Item.order(created_at: :desc).page(params[:page])
+    @feed_items = Item.where(user_id: current_user.following_users.ids).order(created_at: :desc).page(params[:feed_page])
   end
 
   def show

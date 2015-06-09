@@ -4,13 +4,15 @@
 
 ul.nav.nav-tabs
   li role='presentation'
-    a href='#feed_items' フィード
+    a href='#feed-items' data-toggle='tab' data-target='#feed-items' フィード
   li.active role='presentation'
-    a href='#all_items' すべての投稿
+    a href='#all-items' data-toggle='tab' data-target='#all-items' すべての投稿
 
 .tab-content
-  #all_items.tab-pane.fade.in.active
-
+  #all-items.tab-pane.fade.in.active
     = render partial: 'item', collection: @all_items, locals: { tags_in_new_line: false }
-
     .text-center = paginate @all_items
+
+  #feed-items.tab-pane
+    = render partial: 'item', collection: @feed_items, locals: { tags_in_new_line: false }
+    .text-center = paginate @feed_items
