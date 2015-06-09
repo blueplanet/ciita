@@ -30,6 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
   gem 'better_errors'
+  gem 'bullet'
   gem 'byebug'
   gem 'binding_of_caller'
   gem 'pry-byebug'
