@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i(stock unstock)
 
   def index
-    @items = Item.order(created_at: :desc).page(params[:page])
+    @all_items = Item.order(created_at: :desc).page(params[:page])
   end
 
   def show

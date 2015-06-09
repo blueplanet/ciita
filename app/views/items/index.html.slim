@@ -2,8 +2,15 @@
   h2 プログラミング知識を共有しよう
   = link_to 'ノウハウ・Tipsを投稿する', new_item_path, class: 'btn btn-success', 'data-no-turbolink': '1'
 
-|すべての投稿
+ul.nav.nav-tabs
+  li role='presentation'
+    a href='#feed_items' フィード
+  li.active role='presentation'
+    a href='#all_items' すべての投稿
 
-= render partial: 'item', collection: @items, locals: { tags_in_new_line: false }
+.tab-content
+  #all_items.tab-pane.fade.in.active
 
-.text-center = paginate @items
+    = render partial: 'item', collection: @all_items, locals: { tags_in_new_line: false }
+
+    .text-center = paginate @all_items
