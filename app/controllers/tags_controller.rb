@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   before_action :set_tag, only: %i(show follow unfollow)
 
   def show
-    @items = Item.tagged_with(@tag.name).page(params[:page])
+    @items = Item.includes(:user, :tags).tagged_with(@tag.name).page(params[:page])
   end
 
   private
