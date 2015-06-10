@@ -7,4 +7,11 @@ class Item < ActiveRecord::Base
 
   validates :title, presence: true, length: { maximum: 200 }
   validates :body, presence: true, length: { maximum: 20000, minimum: 10 }
+
+  scope :feed_items_for, -> (user) do
+    joins(:taggings, :user).
+    where 'taggings.tag_id IN (:tag_ids) OR users.id IN (:user_ids)',
+      tag_ids: user.following_by_type(ActsAsTaggableOn::Tag.to_s).pluck(:id),
+      user_ids: user.following_users.pluck(:id)
+  end
 end

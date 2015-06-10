@@ -26,10 +26,13 @@ gem 'jbuilder', '~> 2.0'
 gem 'redcarpet'
 gem 'gravtastic'
 
+gem 'pg'
+
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development do
   gem 'better_errors'
+  gem 'bullet'
   gem 'byebug'
   gem 'binding_of_caller'
   gem 'pry-byebug'
@@ -42,7 +45,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'spring'
-  gem 'sqlite3'
 end
 
 group :test do
@@ -56,5 +58,4 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
 end

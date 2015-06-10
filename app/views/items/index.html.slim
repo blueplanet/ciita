@@ -3,16 +3,16 @@
   = link_to 'ノウハウ・Tipsを投稿する', new_item_path, class: 'btn btn-success', 'data-no-turbolink': '1'
 
 ul.nav.nav-tabs
-  li role='presentation'
-    a href='#feed-items' data-toggle='tab' data-target='#feed-items' フィード
   li.active role='presentation'
+    a href='#feed-items' data-toggle='tab' data-target='#feed-items' フィード
+  li role='presentation'
     a href='#all-items' data-toggle='tab' data-target='#all-items' すべての投稿
 
 .tab-content
-  #all-items.tab-pane.fade.in.active
+  #feed-items.tab-pane.fade.in.active
+    = render partial: 'item', collection: @feed_items, locals: { tags_in_new_line: false }
+    .text-center = paginate @feed_items
+  #all-items.tab-pane
     = render partial: 'item', collection: @all_items, locals: { tags_in_new_line: false }
     .text-center = paginate @all_items
 
-  #feed-items.tab-pane
-    = render partial: 'item', collection: @feed_items, locals: { tags_in_new_line: false }
-    .text-center = paginate @feed_items

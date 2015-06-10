@@ -4,8 +4,8 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i(stock unstock)
 
   def index
-    @all_items = Item.order(created_at: :desc).page(params[:page])
-    @feed_items = Item.where(user_id: current_user.following_users.ids).order(created_at: :desc).page(params[:feed_page])
+    @all_items = Item.includes(:user, :tags).order(created_at: :desc).page(params[:page])
+    @feed_items = Item.feed_items_for(current_user).page(params[:feed_items_page])
   end
 
   def show
