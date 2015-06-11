@@ -18,10 +18,17 @@
 
 ul.nav.nav-tabs
   li.active role='presentation'
-    a href='#last_items' 最近の投稿
+    a href='#user-last-items' data-toggle='tab' data-target='#user-last-items' 最近の投稿
+  li role='presentation'
+    a href='#user-stocks' data-toggle='tab' data-target='#user-stocks' ストックした投稿
 
 .tab-content
   #user-last-items.tab-pane.fade.in.active
     = render partial: 'item', collection: @last_items, locals: { tags_in_new_line: true }
 
     .text-center = paginate @last_items
+
+  #user-stocks.tab-pane
+    = render partial: 'item', collection: @stocks, locals: { tags_in_new_line: true }
+
+    .text-center = paginate @stocks
