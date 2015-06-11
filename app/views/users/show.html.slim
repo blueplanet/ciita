@@ -16,12 +16,51 @@
         - else
           = link_to 'フォローする', follow_user_path(@user), class: 'btn btn-success', method: :patch
 
+
+.user-info
+  .jumbotron
+    .container
+      .row
+        .col-md-4
+          .media
+            .media-heading
+              = "フォロー中のタグ #{@user.following_by_type(ActsAsTaggableOn::Tag.to_s).count}"
+            .media-body
+              = render partial: 'tag', collection: @user.following_by_type(ActsAsTaggableOn::Tag.to_s)
+        .col-md-4
+          .media
+            .media-heading
+              = "フォロー中のユーザ #{@user.following_by_type(User.to_s).count}"
+            .media-body
+              = render partial: 'user_avatar', collection: @user.following_by_type(User.to_s), as: :user
+        .col-md-4
+          .media
+            .media-heading
+              = "フォロワー #{@user.followers_count}"
+            .media-body
+              = render partial: 'user_avatar', collection: @user.followers, as: :user
+
+
 ul.nav.nav-tabs
   li.active role='presentation'
-    a href='#last_items' 最近の投稿
+    a href='#user-last-items' data-toggle='tab' data-target='#user-last-items' 最近の投稿
+  li role='presentation'
+    a href='#user-stocks' data-toggle='tab' data-target='#user-stocks' ストックした投稿
+  li role='presentation'
+    a href='#user-comments' data-toggle='tab' data-target='#user-comments' コメント
 
 .tab-content
   #user-last-items.tab-pane.fade.in.active
     = render partial: 'item', collection: @last_items, locals: { tags_in_new_line: true }
 
     .text-center = paginate @last_items
+
+  #user-stocks.tab-pane
+    = render partial: 'item', collection: @stocks, locals: { tags_in_new_line: true }
+
+    .text-center = paginate @stocks
+
+  #user-comments.tab-pane
+    = render partial: 'comment', collection: @comments
+
+    .text-center = paginate @comments

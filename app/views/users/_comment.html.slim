@@ -1,0 +1,15 @@
+.media
+  .media-left
+    = link_to comment.user do
+      = image_tag comment.user.gravatar_url, size: '64x64'
+  .media-body
+    .media-heading
+      => link_to comment.item.user do
+        = image_tag comment.user.gravatar_url, size: '24x24'
+        =< comment.item.user.email
+      |の投稿
+      =<> link_to comment.item.title, comment.item
+      |にコメント
+      small.text-muted =< l comment.created_at
+
+    = comment.body

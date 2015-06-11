@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :items
+  has_many :comments
 
   acts_as_follower
   acts_as_followable
