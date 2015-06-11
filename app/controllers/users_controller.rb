@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @last_items = @user.items.page(params[:page])
     @stocks = @user.following_items.includes(:user, :tags).order(updated_at: :desc).page(params[:stock_page])
+    @comments = @user.comments.includes(item: [:user]).page(params[:comment_page])
   end
 
   private
