@@ -11,7 +11,7 @@ ul.nav.nav-tabs
 .tab-content
   #feed-items.tab-pane.fade.in.active
     = render partial: 'item', collection: @feed_items, locals: { tags_in_new_line: false }
-    .text-center = paginate @feed_items
+    .text-center = paginate @feed_items, param_name: :feed_items_page
   #all-items.tab-pane
     = render partial: 'item', collection: @all_items, locals: { tags_in_new_line: false }
     .text-center = paginate @all_items

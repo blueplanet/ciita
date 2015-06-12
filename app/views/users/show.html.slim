@@ -58,9 +58,9 @@ ul.nav.nav-tabs
   #user-stocks.tab-pane
     = render partial: 'item', collection: @stocks, locals: { tags_in_new_line: true }
 
-    .text-center = paginate @stocks
+    .text-center = paginate @stocks, param_name: :stock_page
 
   #user-comments.tab-pane
     = render partial: 'comment', collection: @comments
 
-    .text-center = paginate @comments
+    .text-center = paginate @comments, param_name: :comment_page
