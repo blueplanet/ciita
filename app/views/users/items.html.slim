@@ -1,0 +1,3 @@
+= render 'user_head', user: @user, title: '最近の投稿'
+
+= render partial: 'item', collection: @items, locals: { tags_in_new_line: true }

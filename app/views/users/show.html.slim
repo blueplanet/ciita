@@ -45,9 +45,9 @@ ul.nav.nav-tabs
   li.active role='presentation'
     a href='#user-last-items' data-toggle='tab' data-target='#user-last-items' 最近の投稿
   li role='presentation'
-    a href='#user-stocks' data-toggle='tab' data-target='#user-stocks' ストックした投稿
+    = link_to 'ストックした投稿', user_stocks_path(@user)
   li role='presentation'
-    a href='#user-comments' data-toggle='tab' data-target='#user-comments' コメント
+    = link_to 'コメント', user_comments_path(@user)
 
 .tab-content
   #user-last-items.tab-pane.fade.in.active
@@ -55,12 +55,3 @@ ul.nav.nav-tabs
 
     .text-center = paginate @last_items
 
-  #user-stocks.tab-pane
-    = render partial: 'item', collection: @stocks, locals: { tags_in_new_line: true }
-
-    .text-center = paginate @stocks, param_name: :stock_page
-
-  #user-comments.tab-pane
-    = render partial: 'comment', collection: @comments
-
-    .text-center = paginate @comments, param_name: :comment_page
