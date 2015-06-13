@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'tops/show'
 
-  devise_for :users
+  devise_for :user
 
   resources :items, only: %i(new create edit update index show) do
     member do
@@ -24,9 +24,10 @@ Rails.application.routes.draw do
   end
 
   resources :tags, only: %i(show), concerns: :followable
-
   resources :users, only: %i(show), concerns: :followable do
-    resources :stocks, only: %i(index)
+    get :items
+    get :stocks
+    get :comments
   end
 
   root 'tops#show'

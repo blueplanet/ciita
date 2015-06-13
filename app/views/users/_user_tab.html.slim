@@ -1,0 +1,7 @@
+ul.nav.nav-tabs
+  li class=is_active?('items') role='presentation'
+    = link_to '最近の投稿', user_items_path(@user)
+  li class=is_active?('stocks') role='presentation'
+    = link_to 'ストックした投稿', user_stocks_path(@user)
+  li class=is_active?('comments') role='presentation'
+    = link_to 'コメント', user_comments_path(@user)

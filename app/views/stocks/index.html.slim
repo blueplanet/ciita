@@ -1,9 +1,0 @@
-ul.nav.nav-tabs
-  li.active role='presentation'
-    a href='#stocks' ストックした投稿
-
-.tab-content
-  #user-stocks.tab-pane.fade.in.active
-    = render partial: 'item', collection: @stocks, locals: { tags_in_new_line: true }
-
-    .text-center = paginate @stocks
