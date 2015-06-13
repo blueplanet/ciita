@@ -1,4 +1,4 @@
-= render 'user_tab'
+= render 'user_head', user: @user, title: 'コメント'
 
 ul.media-list
   = render partial: 'comment', collection: @comments

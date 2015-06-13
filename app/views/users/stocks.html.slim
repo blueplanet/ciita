@@ -1,4 +1,4 @@
-= render 'user_tab'
+= render 'user_head', user: @user, title: 'ストックした投稿'
 
 #user-stocks.tab-pane.fade.in.active
   = render partial: 'item', collection: @stocks, locals: { tags_in_new_line: true }
