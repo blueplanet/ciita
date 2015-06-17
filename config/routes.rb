@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'stocks/index'
-
   get 'tops/show'
 
   devise_for :user
