@@ -16,3 +16,5 @@
 //= require turbolinks
 //= require bootstrap-tagsinput.min
 //= require_tree .
+
+Turbolinks.enableProgressBar()
