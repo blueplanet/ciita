@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   include Followable
 
-  before_action :authenticate_user!
   before_action :set_user, only: %i(show follow unfollow)
   before_action :set_owner_user, only: %i(comments items stocks)
 

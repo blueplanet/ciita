@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, :set_item
+  before_action :set_item
 
   def create
     @comment = @item.comments.build comment_params.merge(user: current_user)

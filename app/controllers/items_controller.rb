@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_edit_item, only: %i(edit update)
   before_action :set_item, only: %i(show stock unstock)
 

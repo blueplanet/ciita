@@ -1,7 +1,6 @@
 class TagsController < ApplicationController
   include Followable
 
-  before_action :authenticate_user!
   before_action :set_tag, only: %i(show follow unfollow)
 
   def show
