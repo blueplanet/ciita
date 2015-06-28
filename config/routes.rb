@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :items, excpet: %i(destroy) do
+  resources :items, except: %i(destroy) do
     member do
       patch :stock
       patch :unstock
