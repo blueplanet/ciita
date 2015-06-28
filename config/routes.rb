@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  get 'stocks/index'
-
-  get 'tops/show'
-
-  devise_for :user
-
-  resources :items, only: %i(new create edit update index show) do
+  resources :items, except: %i(destroy) do
     member do
       patch :stock
       patch :unstock
@@ -29,6 +23,8 @@ Rails.application.routes.draw do
     get :stocks
     get :comments
   end
+
+  devise_for :user
 
   root 'tops#show'
 end

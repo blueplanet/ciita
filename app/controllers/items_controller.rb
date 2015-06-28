@@ -1,15 +1,10 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_edit_item, only: %i(edit update)
-  before_action :set_item, only: %i(stock unstock)
+  before_action :set_item, only: %i(show stock unstock)
 
   def index
     @all_items = Item.includes(:user, :tags).order(created_at: :desc).page(params[:page])
     @feed_items = Item.includes(:user, :tags).feed_items_for(current_user).order(created_at: :desc).page(params[:feed_items_page])
-  end
-
-  def show
-    @item = Item.find params[:id]
   end
 
   def new
