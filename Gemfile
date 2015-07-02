@@ -27,6 +27,7 @@ gem 'redcarpet'
 gem 'gravtastic'
 
 gem 'pg'
+gem 'squeel'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
