@@ -8,7 +8,7 @@ feature 'ユーザは、投稿を管理したい' do
     given!(:items) { create_list :item, 10 }
 
     scenario '他のユーザの投稿を閲覧できる' do
-      visit items_path
+      visit all_items_path
 
       items.each do |item|
         expect(page).to have_content item.title
