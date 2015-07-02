@@ -1,0 +1,9 @@
+.page-header
+  h2 プログラミング知識を共有しよう
+  = link_to 'ノウハウ・Tipsを投稿する', new_item_path, class: 'btn btn-success', 'data-no-turbolink': '1'
+
+ul.nav.nav-tabs
+  = content_tag :li, class: active?('index'), role: 'presentation'
+    = link_to 'フィード', [:items]
+  = content_tag :li, class: active?('all'), role: 'presentation'
+    = link_to 'すべての投稿', [:all, :items]

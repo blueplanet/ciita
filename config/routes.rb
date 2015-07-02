@@ -5,7 +5,10 @@ Rails.application.routes.draw do
       patch :unstock
     end
 
-    post :preview, on: :collection
+    collection do
+      post :preview
+      get :all
+    end
 
     resources :comments, only: %i(create)
   end
