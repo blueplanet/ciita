@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
   end
 
   def preview
-    render text: markdown(params[:md_body])
+    @md_body = params[:md_body]
   end
 
   private
