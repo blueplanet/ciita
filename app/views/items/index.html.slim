@@ -1,6 +1,1 @@
-= render 'items_page_header'
-
-.tab-content
-  #feed-items.tab-pane.fade.in.active
-    = render partial: 'item', collection: @items, locals: { tags_in_new_line: false }
-    .text-center = paginate @items
+= render 'items', items: @items

@@ -7,3 +7,8 @@ ul.nav.nav-tabs
     = link_to 'フィード', [:items]
   = content_tag :li, class: active?('all'), role: 'presentation'
     = link_to 'すべての投稿', [:all, :items]
+
+.tab-content
+  .tab-pane.fade.in.active
+    = render partial: 'item', collection: @items, locals: { tags_in_new_line: false }
+    .text-center = paginate @items
