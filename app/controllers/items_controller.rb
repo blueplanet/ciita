@@ -3,8 +3,11 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i(show stock unstock)
 
   def index
-    @all_items = Item.includes(:user, :tags).order(created_at: :desc).page(params[:page])
-    @feed_items = Item.includes(:user, :tags).feed_items_for(current_user).order(created_at: :desc).page(params[:feed_items_page])
+    @items = Item.includes(:user, :tags).feed_items_for(current_user).order(created_at: :desc).page(params[:page])
+  end
+
+  def all
+    @items = Item.includes(:user, :tags).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -40,7 +43,7 @@ class ItemsController < ApplicationController
   end
 
   def preview
-    render text: markdown(params[:md_body])
+    @md_body = params[:md_body]
   end
 
   private

@@ -10,9 +10,9 @@ class Item < ActiveRecord::Base
 
   scope :feed_items_for, -> (user) do
     joins(:taggings, :user).
-    where('taggings.tag_id IN (:tag_ids) OR users.id IN (:user_ids)',
-      tag_ids: user.following_by_type(ActsAsTaggableOn::Tag.to_s).pluck(:id),
-      user_ids: user.following_users.pluck(:id)
-    ).uniq
+    where {
+      taggings.tag_id.in(user.following_by_type(ActsAsTaggableOn::Tag.to_s).pluck(:id)) |
+      users.id.in(user.following_users.pluck(:id))
+    }.uniq
   end
 end
