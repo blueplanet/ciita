@@ -1,8 +1,7 @@
 language: ruby
-
 rvm:
   - 2.2.2
-
+cache: true
 env:
   - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
 
