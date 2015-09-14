@@ -13,9 +13,11 @@ before_install:
 install:
   - bundle install --gemfile="Gemfile"
   - ruby -v
+  - wget https://byte-unixbench.googlecode.com/files/UnixBench5.1.3.tgz; tar xvf UnixBench5.1.3.tgz; cd UnixBench/; make
 
 before_script:
   - bundle exec rake db:create
 
 script:
- - bundle exec rspec
+  - bundle exec rspec
+  - cd UnixBench ; ./Run
