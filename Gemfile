@@ -55,6 +55,10 @@ group :test do
   gem 'launchy'
   gem 'poltergeist'
   gem 'shoulda-matchers'
+  gem "rspec"
+  gem "ci_reporter"
+  gem "simplecov"
+  gem "simplecov-csv"
 end
 
 group :production do

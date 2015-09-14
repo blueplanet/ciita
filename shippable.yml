@@ -1,0 +1,24 @@
+language: ruby
+rvm:
+  - 2.2.2
+cache: true
+env:
+  - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
+
+before_install:
+  - source ~/.rvm/scripts/rvm
+  - rvm install $SHIPPABLE_RUBY --verify-downloads 1
+  - source ~/.bashrc && ~/.rvm/scripts/rvm && rvm use $SHIPPABLE_RUBY
+
+install:
+  - bundle install --gemfile="Gemfile"
+  - ruby -v
+  - sudo apt-get install make gcc
+  - wget https://byte-unixbench.googlecode.com/files/UnixBench5.1.3.tgz; tar xvf UnixBench5.1.3.tgz; cd UnixBench/; make
+
+before_script:
+  - bundle exec rake db:create
+
+script:
+  - bundle exec rspec
+  - cd UnixBench ; ./Run
