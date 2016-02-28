@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :tags, only: %i(show), concerns: :followable
+  resources :tags, only: %i(show index), concerns: :followable
   resources :users, only: %i(show), concerns: :followable do
     get :items
     get :stocks
